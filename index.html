@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revelstoke Mountain Resort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Header (Шапка) -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo-link">
+                <div class="logo-text">REVELSTOKE<span>MOUNTAIN RESORT</span></div>
+            </a>
+
+            <!-- Десктопное меню -->
+            <nav class="main-nav">
+                <a href="#" data-i18n="nav_winter">WINTER</a>
+                <a href="#" data-i18n="nav_discover">DISCOVER</a>
+                <a href="#" data-i18n="nav_mountain">THE MOUNTAIN</a>
+                <a href="#" data-i18n="nav_realestate">REAL ESTATE</a>
+                <a href="#" data-i18n="nav_summer">SUMMER</a>
+                <a href="#" data-i18n="nav_events">EVENTS</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="header-icons">
+                    <button class="icon-btn" id="profileBtn" title="Профиль">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </button>
+                    <button class="icon-btn" id="searchBtn" title="Поиск">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </div>
+                <div class="header-buttons desktop-only">
+                    <button class="btn-yellow js-action-btn" data-i18n="btn_safety" data-action="Safety & Risk">SAFETY & RISK AWARENESS</button>
+                    <button class="btn-blue js-action-btn" data-i18n="btn_book" data-action="Booking">BOOK NOW</button>
+                </div>
+                
+                <!-- Кнопка гамбургер для мобилок -->
+                <button class="burger-btn" id="burgerBtn" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Выдвижное мобильное меню -->
+        <div class="mobile-menu" id="mobileMenu">
+            <nav class="mobile-nav">
+                <a href="#" data-i18n="nav_winter">WINTER</a>
+                <a href="#" data-i18n="nav_discover">DISCOVER</a>
+                <a href="#" data-i18n="nav_mountain">THE MOUNTAIN</a>
+                <a href="#" data-i18n="nav_realestate">REAL ESTATE</a>
+                <a href="#" data-i18n="nav_summer">SUMMER</a>
+                <a href="#" data-i18n="nav_events">EVENTS</a>
+            </nav>
+            <div class="mobile-buttons">
+                <button class="btn-yellow js-action-btn" data-i18n="btn_safety">SAFETY & RISK AWARENESS</button>
+                <button class="btn-blue js-action-btn" data-i18n="btn_book">BOOK NOW</button>
+            </div>
+        </div>
+
+        <!-- Всплывающая строка поиска -->
+        <div class="search-bar" id="searchBar">
+            <input type="text" placeholder="Поиск по сайту..." id="searchInput">
+            <button id="closeSearch">&times;</button>
+        </div>
+    </header>
+
+    <!-- Основной контейнер страницы -->
+    <div class="page-wrapper">
+
+        <!-- 2. Hero Section -->
+        <section class="hero-section">
+            <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1600&q=80">
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+
+            <!-- Виджет погоды -->
+            <div class="weather-widget">
+                <div class="weather-item">
+                    <span class="icon">☀️</span>
+                    <div class="temp">2°C</div>
+                    <div class="label" data-i18n="weather_base">BASE</div>
+                </div>
+                <div class="weather-item">
+                    <div class="temp">-2°C</div>
+                    <div class="label" data-i18n="weather_summit">SUMMIT</div>
+                </div>
+                <div class="weather-item">
+                    <div class="temp">0<span class="unit">CM</span></div>
+                    <div class="label" data-i18n="weather_snow">24HR SNOW</div>
+                </div>
+            </div>
+
+            <!-- Карточка Ski Conditions -->
+            <div class="ski-conditions-card">
+                <h3 data-i18n="ski_conditions_title">REVELSTOKE MOUNTAIN<br>SKI CONDITIONS</h3>
+                <div class="conditions-grid">
+                    <button class="cond-btn js-action-btn"><span data-i18n="btn_weather">❄️ WEATHER REPORT</span></button>
+                    <button class="cond-btn js-action-btn"><span data-i18n="btn_hill_status">🏔️ HILL STATUS</span></button>
+                    <button class="cond-btn js-action-btn"><span data-i18n="btn_webcams">📷 HILL WEBCAMS</span></button>
+                    <button class="cond-btn btn-green js-action-btn"><span data-i18n="btn_save_winter">% SAVE BIG ON WINTER</span></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Happening Now -->
+        <section class="happening-section">
+            <h2 class="section-title" data-i18n="happening_title">HAPPENING NOW</h2>
+            <div class="slider-container">
+                <button class="slider-arrow prev-btn">&larr;</button>
+                <div class="slider-track">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="Winter Offer">
+                        <div class="card-content">
+                            <h3 data-i18n="card1_title">SAVE BIG ON WINTER BEFORE NOV 15</h3>
+                            <p data-i18n="card1_desc">Our Early Booking Offer is on sale now! Book your Revelstoke vacation by Nov 15 and save up to 40%.</p>
+                            <button class="card-btn js-action-btn" data-i18n="learn_more">LEARN MORE</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" alt="Events">
+                        <div class="card-content">
+                            <h3 data-i18n="card2_title">EVENTS</h3>
+                            <p data-i18n="card2_desc">Revelstoke Mountain Resort offers a year-round lineup of events to elevate your mountain experience.</p>
+                            <button class="card-btn js-action-btn" data-i18n="view_events">VIEW EVENTS</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Summer Activities">
+                        <div class="card-content">
+                            <h3 data-i18n="card3_title">SUMMER ACTIVITIES</h3>
+                            <p data-i18n="card3_desc">Revelstoke warms up for summer, becoming an adventure playground for outdoor activities.</p>
+                            <button class="card-btn js-action-btn" data-i18n="explore">EXPLORE</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-arrow next-btn">&rarr;</button>
+            </div>
+        </section>
+
+        <!-- 4. Feature Blocks -->
+        <section class="feature-block">
+            <div class="feature-text">
+                <h2 data-i18n="feat1_title">ADVENTURE LIVES HERE</h2>
+                <p data-i18n="feat1_desc">Revelstoke is a true adventure playground during the summer months. Experience the best of the outdoors with mountain biking, hiking, sightseeing, the Pipe Mountain Coaster, and more.</p>
+                <button class="btn-dark js-action-btn" data-i18n="btn_summer_act">SUMMER ACTIVITIES</button>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Adventure">
+            </div>
+        </section>
+
+        <section class="feature-block reverse">
+            <div class="feature-text">
+                <h2 data-i18n="feat2_title">PIPE MOUNTAIN COASTER</h2>
+                <p data-i18n="feat2_desc">Turn up the heat this summer and take a ride on Revelstoke's #1 summer attraction! Our two Mountain Coaster Tracks will take you for an exhilarating ride.</p>
+                <button class="btn-dark js-action-btn" data-i18n="learn_more">LEARN MORE</button>
+            </div>
+            <div class="feature-image placeholder-box">
+                <span>PIPE MOUNTAIN COASTER MEDIA</span>
+            </div>
+        </section>
+
+        <!-- 5. Footer (Подвал) -->
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="footer-col info-col">
+                    <div class="contact-group">
+                        <h4 data-i18n="toll_free">TOLL FREE</h4>
+                        <p class="phone">1.866.373.4754</p>
+                    </div>
+                    <div class="contact-group">
+                        <h4 data-i18n="international">INTERNATIONAL</h4>
+                        <p class="phone">+1.250.814.0087</p>
+                    </div>
+                    
+                    <!-- Кнопки смены языка EN / RU -->
+                    <div class="lang-switch">
+                        <button class="lang-btn active" id="langEN">EN</button>
+                        <button class="lang-btn" id="langRU">RU</button>
+                    </div>
+                </div>
+
+                <div class="footer-col links-col">
+                    <h4 data-i18n="more_info">MORE INFO</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="link_contact">Contact Us</a></li>
+                        <li><a href="#" data-i18n="link_feedback">Feedback</a></li>
+                        <li><a href="#" data-i18n="link_press">Press & Media</a></li>
+                        <li><a href="#" data-i18n="link_policy">Harassment Policy</a></li>
+                    </ul>
+                    <button class="btn-dark square-btn js-action-btn" data-i18n="btn_account">MY ACCOUNT</button>
+                </div>
+
+                <div class="footer-col subscribe-col">
+                    <h3 data-i18n="stay_connected">STAY CONNECTED</h3>
+                    <p data-i18n="subscribe_desc">Sign up for exclusive offers, news and updates, events, and more.</p>
+                    <form class="subscribe-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your Email Address..." required id="emailInput">
+                        <button type="submit" class="btn-blue-submit" data-i18n="btn_signup">SIGNUP</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <button class="btn-yellow mini js-action-btn" data-i18n="btn_safety">SAFETY & RISK AWARENESS</button>
+                <p class="copyright">© 2026 Revelstoke Mountain Resort, Inc. &nbsp;|&nbsp; <a href="#" data-i18n="privacy">Privacy & Terms of Use</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
