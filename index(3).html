@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALMATY SUPER SKI — ultra-premium сноуборд и горнолыжный кластер</title>
+<meta name="description" content="ALMATY SUPER SKI: закрытый горный кластер в Заилийском Алатау. Сноуборд, сноупарки, 161 км трасс, Private Pass.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <div class="container nav">
+    <nav class="nav-left" id="navLinks">
+      <a href="#resorts" data-i18n="nav1">Кластеры</a>
+      <a href="#map-section" data-i18n="nav2">Схема трасс</a>
+      <a href="#services" data-i18n="nav4">Сервисы</a>
+      <a href="#perks" data-i18n="nav3">Привилегии</a>
+      <a href="#pass" class="btn btn-cta menu-cta">Private Pass</a>
+    </nav>
+    <a href="#top" class="logo">SUPER<i>&bull;</i>SKI</a>
+    <div class="nav-right">
+      <span class="header-temp" title="Погода в Алматы"><span id="headerTemp">--</span>°C · Алматы</span>
+      <div class="lang">
+        <button class="active" data-lang="ru">RU</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#pass" class="btn btn-ghost" style="padding:11px 20px;font-size:.66rem" data-i18n="privatePass">Private Pass</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="hero-content container reveal">
+      <p class="eyebrow" data-i18n="heroEyebrow">Заилийский Алатау · Алматы · 161 км трасс</p>
+      <h1>SUPER <i>SKI</i></h1>
+      <p class="sub" data-i18n="heroSub">Единый сноуборд и горнолыжный кластер от Кок-Жайляу до Шымбулака и Oi-Qaragai. Сноупарки мирового уровня, пухляк и прямой доступ к вершинам.</p>
+
+      <div class="hero-actions">
+        <a href="#pass" class="btn btn-cta" data-i18n="btnPass">Подобрать Pass</a>
+        <a href="#map-section" class="btn btn-ghost" data-i18n="btnMap">Схема трасс и Snowpark</a>
+        <a href="#services" class="btn btn-ghost" data-i18n="btnRent">Pro-Прокат и школа</a>
+      </div>
+    </div>
+
+    <!-- Калькулятор VIP-пасса -->
+    <div class="pass-widget reveal reveal-delay" id="pass">
+      <div class="field">
+        <label data-i18n="gear">Снаряд</label>
+        <div class="gear-switch" role="group" aria-label="Выбор снаряда">
+          <button type="button" class="active" data-gear="snowboard" data-i18n="gearBoard">Сноуборд</button>
+          <button type="button" data-gear="ski" data-i18n="gearSki">Лыжи</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="zone" data-i18n="zone">Сектор кластера</label>
+        <select id="zone">
+          <option value="1">Kok-Zhailau (60 км новых трасс)</option>
+          <option value="1.15">Shymbulak Peak (3 200 м)</option>
+          <option value="0.9">Oi-Qaragai &amp; Pioneer</option>
+          <option value="1.35">All-Cluster 161 км (Единый)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label data-i18n="days">Дней</label>
+        <div class="stepper">
+          <button type="button" id="minus" aria-label="Меньше">−</button>
+          <output id="days">3</output>
+          <button type="button" id="plus" aria-label="Больше">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="access" data-i18n="access">Тариф доступа</label>
+        <select id="access">
+          <option value="1">All-Mountain + Snowpark</option>
+          <option value="1.45">Fast-Track + Ночное катание</option>
+          <option value="3.1">Heli-Board / Backcountry VIP</option>
+        </select>
+      </div>
+
+      <div class="price">
+        <small data-i18n="total">Итого</small>
+        <strong id="total">€0</strong>
+      </div>
+
+      <!-- Дополнительные сноуборд-опции -->
+      <div class="pass-extras">
+        <label class="extra-check">
+          <input type="checkbox" id="optRent" value="45">
+          <span>Pro-прокат сноуборд/лыжи (+€45/день)</span>
+        </label>
+        <label class="extra-check">
+          <input type="checkbox" id="optIns" value="15">
+          <span>Страховка в горах + фрирайд (+€15/день)</span>
+        </label>
+        <label class="extra-check">
+          <input type="checkbox" id="optCoach" value="90">
+          <span>Инструктор / гид в парке (+€90/день)</span>
+        </label>
+        <span class="discount-badge" id="discountBadge">Скидка 10% от 5 дней</span>
+      </div>
+
+      <button class="btn btn-cta" id="buy" data-i18n="book">Забронировать</button>
+    </div>
+  </section>
+
+  <!-- ===== ТЕЛЕМЕТРИЯ ===== -->
+  <section class="telemetry" id="tracks">
+    <div class="container tele-row">
+      <div class="tele reveal">
+        <div class="label" data-i18n="peak">Перепад высот</div>
+        <div class="value">1 550–3 200 <small>м</small></div>
+      </div>
+      <div class="tele reveal">
+        <div class="label" data-i18n="temp">Температура</div>
+        <div class="value"><span id="temp">--</span> <small>°C</small></div>
+        <div class="temp-status" id="tempStatus">Алматы · загрузка…</div>
+      </div>
+      <div class="tele reveal">
+        <div class="label" data-i18n="snow">Снежный покров / Длина</div>
+        <div class="value">161 <small>км · +45 см</small></div>
+      </div>
+      <div class="tele reveal">
+        <div class="label" data-i18n="lifts">11 канатных дорог</div>
+        <div class="value status"><span class="dot"></span><span data-i18n="open">Открыто</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ИНТЕРАКТИВНАЯ СХЕМА ТРАСС И SNOWPARK ===== -->
+  <section class="section" id="map-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="mapEyebrow">Интерактивная навигация</p>
+          <h2 class="h2" data-i18n="mapTitle">Схема трасс и Snowpark</h2>
+        </div>
+        <div class="trail-filters" role="tablist" aria-label="Фильтр трасс">
+          <button class="filter-btn active" data-filter="all">Все 161 км</button>
+          <button class="filter-btn" data-filter="easy"><span class="dot-c easy"></span>Зелёные / Синие (70%)</button>
+          <button class="filter-btn" data-filter="red"><span class="dot-c red"></span>Красные</button>
+          <button class="filter-btn" data-filter="black"><span class="dot-c black"></span>Чёрные / Фрирайд</button>
+          <button class="filter-btn" data-filter="park"><span class="dot-c park"></span>Snowpark &amp; Pipe</button>
+        </div>
+      </div>
+
+      <div class="map-board reveal">
+        <!-- Топографическая схема высот и связок кластера -->
+        <div class="topo-canvas">
+          <svg viewBox="0 0 900 400" class="topo-svg" aria-label="Схема кластера Almaty Super Ski">
+            <defs>
+              <linearGradient id="mountainFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(217,4,41,0.18)"/>
+                <stop offset="100%" stop-color="rgba(5,12,23,0.95)"/>
+              </linearGradient>
+            </defs>
+            <!-- Силуэт хребта Заилийского Алатау -->
+            <path d="M0,360 L110,270 L240,180 L360,215 L520,75 L670,165 L790,130 L900,220 L900,400 L0,400 Z" fill="url(#mountainFill)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+            <!-- Линии трасс -->
+            <path class="trail-line" data-cat="easy" d="M240,180 Q190,245 110,270" stroke="#3B82F6" stroke-width="3" fill="none"/>
+            <path class="trail-line" data-cat="easy" d="M790,130 Q720,185 670,165" stroke="#22C55E" stroke-width="3" fill="none"/>
+            <path class="trail-line" data-cat="red" d="M520,75 Q430,145 360,215" stroke="#D90429" stroke-width="3" fill="none"/>
+            <path class="trail-line" data-cat="black" d="M520,75 Q580,115 670,165" stroke="#F8FAFC" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>
+            <path class="trail-line" data-cat="park" d="M240,180 L360,215" stroke="#F59E0B" stroke-width="4" fill="none"/>
+            <!-- Канатные дороги -->
+            <line x1="110" y1="270" x2="240" y2="180" stroke="rgba(255,255,255,0.35)" stroke-dasharray="3 3"/>
+            <line x1="360" y1="215" x2="520" y2="75" stroke="rgba(255,255,255,0.35)" stroke-dasharray="3 3"/>
+            <!-- Узлы -->
+            <g class="map-node" transform="translate(110,270)">
+              <circle r="6" fill="#22C55E"/><text x="12" y="4">Хаб Навои / Дулати (1 550 м)</text>
+            </g>
+            <g class="map-node" transform="translate(240,180)">
+              <circle r="7" fill="#F59E0B"/><text x="-20" y="-14">Kok-Zhailau &amp; Snowpark (2 200 м)</text>
+            </g>
+            <g class="map-node" transform="translate(520,75)">
+              <circle r="8" fill="#D90429"/><text x="-45" y="-16">Talgar Pass · Shymbulak (3 200 м)</text>
+            </g>
+            <g class="map-node" transform="translate(790,130)">
+              <circle r="6" fill="#3B82F6"/><text x="-135" y="-14">Oi-Qaragai &amp; Pioneer (2 150 м)</text>
+            </g>
+          </svg>
+
+          <div class="park-banner">
+            <div>
+              <span class="badge-live">SNOWPARK OPEN</span>
+              <strong>Almaty Super Snowpark (Kok-Zhailau)</strong>
+              <p>3 линии трамплинов (S / M / Pro Big Air 18 м), 14 джиб-фигур, подушка для отработки трюков и освещаемый хафпайп.</p>
+            </div>
+            <button type="button" class="btn btn-ghost quick-book" data-preset-zone="0" data-preset-access="0">Записаться в парк</button>
+          </div>
+        </div>
+
+        <!-- Список активных трасс по фильтру -->
+        <div class="trail-list" id="trailList">
+          <div class="trail-item" data-cat="park">
+            <span class="t-badge park">PARK</span>
+            <div>
+              <strong>Pro Jib &amp; Kicker Line</strong>
+              <small>Kok-Zhailau · 1.4 км · Вечерний свет до 23:00</small>
+            </div>
+            <span class="t-status ok">Открыта</span>
+          </div>
+          <div class="trail-item" data-cat="easy">
+            <span class="t-badge easy">СИНЯЯ</span>
+            <div>
+              <strong>Panorama Cruiser</strong>
+              <small>Кок-Жайляу — Бутаковка · 6.2 км · Широкий вельвет для карвинга</small>
+            </div>
+            <span class="t-status ok">Открыта</span>
+          </div>
+          <div class="trail-item" data-cat="red">
+            <span class="t-badge red">КРАСНАЯ</span>
+            <div>
+              <strong>Talgar Ridge Descent</strong>
+              <small>Шымбулак · 3.8 км · Перепад 920 м</small>
+            </div>
+            <span class="t-status ok">Открыта</span>
+          </div>
+          <div class="trail-item" data-cat="black">
+            <span class="t-badge black">ЧЁРНАЯ</span>
+            <div>
+              <strong>Dry Combe Freeride</strong>
+              <small>Шымбулак — Кок-Жайляу · Лавинный контроль · Только с бипером</small>
+            </div>
+            <span class="t-status ok">По гиду</span>
+          </div>
+          <div class="trail-item" data-cat="easy">
+            <span class="t-badge easy">ЗЕЛЁНАЯ</span>
+            <div>
+              <strong>Forest Family Trail</strong>
+              <small>Oi-Qaragai &amp; Pioneer · 4.5 км · Учебная зона и лесные просеки</small>
+            </div>
+            <span class="t-status ok">Открыта</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== КУРОРТЫ КЛАСТЕРА ===== -->
+  <section class="section" id="resorts" style="padding-top: 20px;">
+    <div class="container">
+      <p class="eyebrow reveal" data-i18n="resortsEyebrow">Единая инфраструктура</p>
+      <h2 class="h2 reveal" data-i18n="resortsTitle">Секторы кластера</h2>
+      <div class="resort-grid">
+        <article class="resort reveal" data-zone="0">
+          <div class="photo" style="background-image:var(--photo-apex)"></div>
+          <div class="resort-body">
+            <div class="tag">01 · 60 км трасс · Ski-in / Ski-out</div>
+            <h3>Kok-Zhailau Hub</h3>
+            <p>Новое сердце кластера: 70% широких синих и зелёных трасс, главный сноупарк, пешеходный Front de neige без машин и прямая гондола от хаба Навои — Дулати.</p>
+            <span class="arrow">→</span>
+          </div>
+        </article>
+        <article class="resort reveal reveal-delay" data-zone="1">
+          <div class="photo" style="background-image:var(--photo-nordic)"></div>
+          <div class="resort-body">
+            <div class="tag">02 · До 3 200 м · Фрирайд и крутые стенки</div>
+            <h3>Shymbulak Peak</h3>
+            <p>Высокогорные спуски с Талгарского перевала, длинные красные трассы и зоны внетрассового катания с гидами.</p>
+            <span class="arrow">→</span>
+          </div>
+        </article>
+        <article class="resort reveal" data-zone="2">
+          <div class="photo" style="background-image:var(--photo-glacier)"></div>
+          <div class="resort-body">
+            <div class="tag">03 · Лесные маршруты · Ночное катание</div>
+            <h3>Oi-Qaragai &amp; Pioneer</h3>
+            <p>Живописные лесные трассы среди тянь-шаньских елей, семейные зоны и шале с прямым выходом на склон.</p>
+            <span class="arrow">→</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="hr"></div></div>
+
+  <!-- ===== СЕРВИСЫ ДЛЯ СНОУБОРДИСТОВ И РАЙДЕРОВ ===== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="servEyebrow">Всё для катания</p>
+          <h2 class="h2" data-i18n="servTitle">Сервисы курорта</h2>
+        </div>
+        <div class="service-tabs" role="tablist">
+          <button class="tab-btn active" data-tab="rental">Pro-Прокат</button>
+          <button class="tab-btn" data-tab="workshop">Ски-сервис</button>
+          <button class="tab-btn" data-tab="school">Школа и гиды</button>
+          <button class="tab-btn" data-tab="shuttle">Шаттл &amp; Паркинг</button>
+        </div>
+      </div>
+
+      <div class="service-panels reveal">
+        <!-- Вкладка 1: Pro-Прокат -->
+        <div class="service-panel active" id="tab-rental">
+          <div class="srv-card">
+            <span class="n">PRO BOARD</span>
+            <h3>Freestyle &amp; Park Set</h3>
+            <p>Доски Burton Custom / Jones Mountain Twin, крепления Step On и ботинки с двойной системой BOA.</p>
+            <div class="srv-foot">
+              <strong>€45 / день</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Pro-прокат: Freestyle & Park Set (€45)">Забронировать</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">POWDER</span>
+            <h3>Splitboard &amp; Freeride</h3>
+            <p>Направленные паудер-борды с рокером, сплитборды с камусами и лавинный комплект (бипер, щуп, лопата).</p>
+            <div class="srv-foot">
+              <strong>€65 / день</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Pro-прокат: Splitboard & Freeride (€65)">Забронировать</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">TEST CENTER</span>
+            <h3>Смена доски в течение дня</h3>
+            <p>Бесплатная замена снаряда на верхней станции: утром карвинг на жёсткой доске, днём — парк или пухляк.</p>
+            <div class="srv-foot">
+              <strong>Включено в Pass</strong>
+              <button type="button" class="btn btn-cta srv-book" data-service="Доступ в Test Center (смена досок)">Выбрать</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка 2: Ски-сервис -->
+        <div class="service-panel" id="tab-workshop">
+          <div class="srv-card">
+            <span class="n">01 · EXPRESS</span>
+            <h3>Горячий парафин и кант</h3>
+            <p>Нанесение температурного парафина под текущую погоду Алматы и заточка кантов на станке Wintersteiger за 25 минут.</p>
+            <div class="srv-foot">
+              <strong>€25</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Ски-сервис: Горячий парафин и кант (€25)">Записаться</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">02 · FULL RESTORE</span>
+            <h3>Ремонт скользяка P-Tex</h3>
+            <p>Заливка глубоких царапин после фрирайда, шлифовка структуры камнем и консервация снаряда.</p>
+            <div class="srv-foot">
+              <strong>€50</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Ски-сервис: Полный ремонт скользяка (€50)">Записаться</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">03 · BOOTFITTING</span>
+            <h3>Термоформовка лайнеров</h3>
+            <p>Индивидуальная подгонка сноубордических и горнолыжных ботинок под анатомию стопы без точек давления.</p>
+            <div class="srv-foot">
+              <strong>€40</strong>
+              <button type="button" class="btn btn-cta srv-book" data-service="Бутфитинг: Термоформовка ботинок (€40)">Записаться</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка 3: Школа и гиды -->
+        <div class="service-panel" id="tab-school">
+          <div class="srv-card">
+            <span class="n">FIRST STEPS</span>
+            <h3>Сноуборд с нуля за 2 дня</h3>
+            <p>Индивидуальные занятия на пологом зелёном склоне с сертифицированным инструктором ISIA.</p>
+            <div class="srv-foot">
+              <strong>€90 / 2 часа</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Школа: Сноуборд с нуля (€90)">Записаться</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">FREESTYLE COACHING</span>
+            <h3>Тренировки в Snowpark</h3>
+            <p>Постановка прыжков с трамплинов, вращения 180/360 и безопасное скольжение по рейлам с видеоразбором.</p>
+            <div class="srv-foot">
+              <strong>€110 / 2 часа</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Школа: Freestyle в Snowpark (€110)">Записаться</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">BACKCOUNTRY</span>
+            <h3>Фрирайд-гид по Алатау</h3>
+            <p>Сопровождение по нетронутым кулуарам между Шымбулаком и Кок-Жайляу. Лавинное снаряжение выдаётся.</p>
+            <div class="srv-foot">
+              <strong>€240 / день</strong>
+              <button type="button" class="btn btn-cta srv-book" data-service="Гид: Backcountry фрирайд-день (€240)">Записаться</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка 4: Шаттл и Паркинг -->
+        <div class="service-panel" id="tab-shuttle">
+          <div class="srv-card">
+            <span class="n">ECO SHUTTLE</span>
+            <h3>Экспресс от хаба Навои — Дулати</h3>
+            <p>Электрошаттлы каждые 10 минут от перехватывающего паркинга в городе прямо к нижней станции гондолы.</p>
+            <div class="srv-foot">
+              <strong>Бесплатно по Pass</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Бронь места на Эко-шаттл Навои — Дулати">Забронировать место</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">SKI STORAGE</span>
+            <h3>Тёплые локеры с сушкой</h3>
+            <p>Персональный шкафчик у подножия трасс с УФ-дезинфекцией и сушкой ботинок к утреннему вельвету.</p>
+            <div class="srv-foot">
+              <strong>€18 / день</strong>
+              <button type="button" class="btn btn-ghost srv-book" data-service="Аренда тёплого локера с сушкой (€18)">Забронировать</button>
+            </div>
+          </div>
+          <div class="srv-card">
+            <span class="n">VIP TRANSFER</span>
+            <h3>Трансфер из аэропорта / отеля</h3>
+            <p>Подача внедорожника с багажником для сноубордов и прямым подъездом к VIP-терминалу Front de neige.</p>
+            <div class="srv-foot">
+              <strong>€75 / рейс</strong>
+              <button type="button" class="btn btn-cta srv-book" data-service="VIP-трансфер с креплением для бордов (€75)">Заказать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="hr"></div></div>
+
+  <!-- ===== ПРИВИЛЕГИИ ===== -->
+  <section class="section" id="perks">
+    <div class="container">
+      <p class="eyebrow reveal" data-i18n="perksEyebrow">Клуб</p>
+      <h2 class="h2 reveal" data-i18n="perksTitle">Привилегии</h2>
+      <div class="perks reveal">
+        <div class="perk">
+          <div class="n">01</div>
+          <h3>Heli-Board &amp; Heli-Ski</h3>
+          <p>Вертолётные заброски на нетронутые гребни Заилийского Алатау с сертифицированными гидами.</p>
+        </div>
+        <div class="perk">
+          <div class="n">02</div>
+          <h3>Ski-in / Ski-out Chalets</h3>
+          <p>Закрытые шале прямо на трассе с панорамной сауной, камином и пешеходной зоной без автомобилей.</p>
+        </div>
+        <div class="perk">
+          <div class="n">03</div>
+          <h3>Alpine Concierge 24/7</h3>
+          <p>Персональный консьерж организует инструкторов, тест-доски, трансфер и ужин на высоте 3 200 м.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <h4>ALMATY SUPER SKI</h4>
+        <ul>
+          <li><a href="#resorts">Секторы кластера</a></li>
+          <li><a href="#map-section">Схема трасс и Snowpark</a></li>
+          <li><a href="#services">Pro-Прокат и школа</a></li>
+          <li><a href="#perks">Привилегии</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="contacts">Контакты</h4>
+        <ul>
+          <li><a href="mailto:concierge@almatysuperski.kz">concierge@almatysuperski.kz</a></li>
+          <li><a href="tel:+77270000000">+7 (727) 000-00-00 · Алматы</a></li>
+          <li><span>Хаб: пересечение пр. Навои и ул. Дулати</span></li>
+        </ul>
+      </div>
+      <div class="foot-cta">
+        <a href="#pass" class="btn btn-cta">Оформить Private Pass</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-logo">SUPER<i>&bull;</i>SKI</div>
+  <div class="container foot-bottom">
+    <span>© 2026 ALMATY SUPER SKI. <span data-i18n="rights">Все права защищены.</span></span>
+    <span><a href="#">Эко-стандарт кластера</a> · <a href="#">Правила FIS на склоне</a></span>
+  </div>
+</footer>
+
+<!-- Модальное окно подтверждения -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="mClose" aria-label="Закрыть">×</button>
+    <div class="confirm">
+      <p class="eyebrow">ALMATY SUPER SKI</p>
+      <h3 id="mTitle">Подтверждение бронирования</h3>
+      <div class="sum">
+        <div><span>Снаряд / Услуга</span><span id="sGear">Сноуборд</span></div>
+        <div><span>Сектор</span><span id="sZone"></span></div>
+        <div><span>Дней</span><span id="sDays"></span></div>
+        <div><span>Тариф</span><span id="sAccess"></span></div>
+        <div><span>Доп. опции</span><span id="sExtras">Нет</span></div>
+        <div class="total"><span>Итого</span><span id="sTotal"></span></div>
+      </div>
+      <button class="btn btn-cta" id="confirm">Подтвердить и получить QR-код</button>
+    </div>
+    <div class="done">
+      <p class="eyebrow">Бронирование подтверждено</p>
+      <div class="ref" id="ref"></div>
+      <p style="color:var(--steel);font-size:.86rem;margin-bottom:20px;">Покажите этот код на турникете гондолы или в пункте Pro-проката.</p>
+      <button class="btn btn-ghost" id="mClose2" style="width:100%">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
