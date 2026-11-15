@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER SKI — горнолыжный кластер</title>
+<meta name="description" content="SUPER SKI: курорты, ски-пассы, трассы, бронирование онлайн.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== ХЕДЕР ===== -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">SUPER<span>SKI</span></a>
+    <ul class="menu" id="menu">
+      <li><a href="#resorts">Курорты</a></li>
+      <li><a href="#trails">Трассы</a></li>
+      <li><a href="#passes">Ски-пассы</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <div class="nav-actions">
+      <span id="temp-top">-- °C · Алматы</span>
+      <button class="btn btn-outline btn-sm cart-btn" id="openCart" aria-label="Корзина">Корзина <span class="badge" id="cartCount">0</span></button>
+      <button class="burger" id="burger" aria-label="Меню">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ===== HERO ===== -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <h1>SUPER <span>SKI</span></h1>
+    <p>Горный кластер над Алматы: курорты, трассы и ски-пассы в одном месте. Купите пасс онлайн за пару минут.</p>
+    <div class="hero-btns">
+      <a href="#passes" class="btn btn-primary">Купить ски-пасс</a>
+      <a href="#resorts" class="btn btn-outline">Курорты</a>
+    </div>
+    <div class="status-pill"><span class="dot" id="openDot"></span><span id="openText">Проверяем часы работы…</span></div>
+  </div>
+</div>
+
+<!-- ===== КУРОРТЫ ===== -->
+<section id="resorts">
+  <div class="wrap">
+    <h2>Курорты</h2>
+    <p class="lead">Три зоны катания с разным рельефом: от широких спусков до семейных склонов.</p>
+    <div class="grid3">
+      <article class="card">
+        <h3>Apex Peak</h3>
+        <p>Длинные широкие спуски и первая линия подъёмников.</p>
+        <div class="meta">2 450–3 450 м · 18 трасс · 9 подъёмников</div>
+        <div class="actions">
+          <button class="btn btn-outline btn-sm" data-resort="0">Подробнее</button>
+          <a href="#passes" class="btn btn-primary btn-sm" data-zone="0">Выбрать пасс</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Nordic Valley</h3>
+        <p>Спокойные трассы и лесные маршруты. Семейный формат.</p>
+        <div class="meta">1 780 м · 12 трасс · 6 подъёмников</div>
+        <div class="actions">
+          <button class="btn btn-outline btn-sm" data-resort="1">Подробнее</button>
+          <a href="#passes" class="btn btn-primary btn-sm" data-zone="1">Выбрать пасс</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Glacier Sanctuary</h3>
+        <p>Ледниковые спуски и приватная зона отдыха.</p>
+        <div class="meta">2 900 м · 15 трасс · 8 подъёмников</div>
+        <div class="actions">
+          <button class="btn btn-outline btn-sm" data-resort="2">Подробнее</button>
+          <a href="#passes" class="btn btn-primary btn-sm" data-zone="2">Выбрать пасс</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ===== ТРАССЫ ===== -->
+<section id="trails">
+  <div class="wrap">
+    <h2>Статус трасс</h2>
+    <p class="lead">Фильтруйте трассы по статусу. Данные демонстрационные: подключите API курорта.</p>
+    <div class="filters" role="group" aria-label="Фильтр трасс">
+      <button class="filter-btn active" data-filter="all">Все</button>
+      <button class="filter-btn" data-filter="open">Открытые</button>
+      <button class="filter-btn" data-filter="closed">Закрытые</button>
+    </div>
+    <div class="trails" id="trailList">
+      <div class="trail" data-status="open"><span>Alpine A1</span><span class="lvl">синяя · <span style="color:var(--ok)">открыта</span></span></div>
+      <div class="trail" data-status="open"><span>Alpine A2</span><span class="lvl">синяя · <span style="color:var(--ok)">открыта</span></span></div>
+      <div class="trail" data-status="closed"><span>Black B3</span><span class="lvl">чёрная · <span style="color:var(--bad)">закрыта</span></span></div>
+      <div class="trail" data-status="open"><span>Red R4</span><span class="lvl">красная · <span style="color:var(--ok)">открыта</span></span></div>
+      <div class="trail" data-status="open"><span>Blue B5</span><span class="lvl">синяя · <span style="color:var(--ok)">открыта</span></span></div>
+      <div class="trail" data-status="closed"><span>Park P1</span><span class="lvl">парк · <span style="color:var(--bad)">закрыт</span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ===== СКИ-ПАССЫ ===== -->
+<section id="passes">
+  <div class="wrap">
+    <h2>Ски-пассы</h2>
+    <p class="lead">Выберите пасс, укажите количество и добавьте в корзину. Цены в евро.</p>
+    <div class="grid3">
+      <article class="card">
+        <h3>Дневной</h3>
+        <p>Один день на любом курорте кластера.</p>
+        <div class="price" data-price="65">€65 <small>/ день</small></div>
+        <div class="actions" style="align-items:center">
+          <div class="qty"><button data-dec="day">−</button><output id="q-day">1</output><button data-inc="day">+</button></div>
+          <button class="btn btn-primary btn-sm" data-add="day" data-name="Дневной" data-price="65">В корзину</button>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Пакет 5 дней</h3>
+        <p>Пять дней подряд со скидкой. Удобно для короткого отпуска.</p>
+        <div class="price">€280 <small>/ пакет</small></div>
+        <div class="actions" style="align-items:center">
+          <div class="qty"><button data-dec="week">−</button><output id="q-week">1</output><button data-inc="week">+</button></div>
+          <button class="btn btn-primary btn-sm" data-add="week" data-name="Пакет 5 дней" data-price="280">В корзину</button>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Сезонный</h3>
+        <p>Весь сезон на всех курортах кластера.</p>
+        <div class="price">€1200 <small>/ сезон</small></div>
+        <div class="actions" style="align-items:center">
+          <div class="qty"><button data-dec="season">−</button><output id="q-season">1</output><button data-inc="season">+</button></div>
+          <button class="btn btn-primary btn-sm" data-add="season" data-name="Сезонный" data-price="1200">В корзину</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ===== КОНТАКТЫ ===== -->
+<section id="contacts">
+  <div class="wrap contact-wrap">
+    <div>
+      <h2>Контакты</h2>
+      <p class="lead">Напишите нам, и мы ответим в течение рабочего дня.</p>
+      <ul class="info-list">
+        <li><strong>Телефон</strong><a href="tel:+70000000000">+7 000 000 00 00</a></li>
+        <li><strong>Почта</strong><a href="mailto:info@superski.example">info@superski.example</a></li>
+        <li><strong>Часы работы</strong>Ежедневно 09:00–17:00</li>
+      </ul>
+      <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="tel:+70000000000" class="btn btn-outline btn-sm">Позвонить</a>
+        <a href="https://maps.google.com/?q=Almaty+Shymbulak" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Маршрут до подъёмника</a>
+      </div>
+    </div>
+    <div>
+      <form id="contactForm" novalidate>
+        <div class="field" data-field="name"><label for="cName">Имя</label><input id="cName" name="name" autocomplete="name"><div class="err"></div></div>
+        <div class="field" data-field="email"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" autocomplete="email"><div class="err"></div></div>
+        <div class="field" data-field="message"><label for="cMsg">Сообщение</label><textarea id="cMsg" name="message" rows="4"></textarea><div class="err"></div></div>
+        <button class="btn btn-primary" type="submit">Отправить</button>
+        <div class="form-msg" id="contactMsg"></div>
+      </form>
+      <form id="subscribeForm" novalidate style="margin-top:34px">
+        <label for="subEmail" style="color:var(--muted);font-size:.9rem">Новости и скидки на почту</label>
+        <div class="subscribe">
+          <input id="subEmail" type="email" placeholder="you@example.com">
+          <button class="btn btn-outline btn-sm" type="submit">Подписаться</button>
+        </div>
+        <div class="form-msg" id="subMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <strong style="color:var(--text)">SUPER SKI</strong>
+      <p>© 2026 SUPER SKI. Все права защищены.</p>
+    </div>
+    <div>
+      <strong style="color:var(--text)">Разделы</strong>
+      <ul><li><a href="#resorts">Курорты</a></li><li><a href="#trails">Трассы</a></li><li><a href="#passes">Ски-пассы</a></li></ul>
+    </div>
+    <div>
+      <strong style="color:var(--text)">Правовая информация</strong>
+      <ul><li><a href="#">Политика конфиденциальности</a></li><li><a href="#">Условия</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== КОРЗИНА (drawer) ===== -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Корзина">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <h3>Корзина</h3>
+    <button class="btn btn-ghost btn-sm" id="closeCart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-total"><span>Итого</span><span id="cartTotal">€0</span></div>
+  <button class="btn btn-primary" id="checkoutBtn">Оформить заказ</button>
+</aside>
+
+<!-- ===== ОФОРМЛЕНИЕ ЗАКАЗА ===== -->
+<div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <div id="coForm">
+    <h3 id="coTitle" style="margin-bottom:16px">Оформление заказа</h3>
+    <form id="checkoutForm" novalidate>
+      <div class="field" data-field="fname"><label for="fName">Имя</label><input id="fName"><div class="err"></div></div>
+      <div class="field" data-field="femail"><label for="fEmail">Email</label><input id="fEmail" type="email"><div class="err"></div></div>
+      <div class="field" data-field="fphone"><label for="fPhone">Телефон</label><input id="fPhone" type="tel" placeholder="+7 777 000 00 00"><div class="err"></div></div>
+      <div class="field" data-field="fdate"><label for="fDate">Дата начала</label><input id="fDate" type="date"><div class="err"></div></div>
+      <div class="cart-total" style="margin:6px 0"><span>К оплате</span><span id="coTotal">€0</span></div>
+      <button class="btn btn-primary" type="submit">Подтвердить</button>
+    </form>
+  </div>
+  <div id="coDone" style="display:none;text-align:center">
+    <p style="color:var(--muted)">Заказ оформлен. Номер заказа:</p>
+    <h3 id="orderId" style="color:var(--accent);margin:12px 0 18px;letter-spacing:.1em"></h3>
+    <p style="color:var(--muted);margin-bottom:20px">Подтверждение придёт на почту.</p>
+    <button class="btn btn-outline" data-close>Закрыть</button>
+  </div>
+</div>
+
+<!-- ===== КАРТОЧКА КУРОРТА (модалка) ===== -->
+<div class="modal" id="resortModal" role="dialog" aria-modal="true">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <h3 id="rTitle" style="margin-bottom:10px"></h3>
+  <p id="rText" style="color:var(--muted);margin-bottom:20px"></p>
+  <button class="btn btn-primary" id="rBuy">Выбрать пасс</button>
+</div>
+
+<!-- Cookie-баннер -->
+<div class="cookie" id="cookie">
+  <span>Мы используем cookie, чтобы сайт работал корректно.</span>
+  <button class="btn btn-primary btn-sm" id="cookieOk">Принять</button>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
